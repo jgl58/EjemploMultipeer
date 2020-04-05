@@ -12,6 +12,8 @@
 		3EA4524E224F5F0C00932E0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA4524C224F5F0C00932E0D /* Main.storyboard */; };
 		3EA45250224F5F0D00932E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA4524F224F5F0D00932E0D /* Assets.xcassets */; };
 		3EA45253224F5F0D00932E0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA45251224F5F0D00932E0D /* LaunchScreen.storyboard */; };
+		3EA4525B224F5FA000932E0D /* SendTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA4525A224F5FA000932E0D /* SendTextService.swift */; };
+		7DEC447C243A3AC70016E90A /* AppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEC447B243A3AC70016E90A /* AppAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3EA4524F224F5F0D00932E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EA45252224F5F0D00932E0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EA45254224F5F0D00932E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EA4525A224F5FA000932E0D /* SendTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTextService.swift; sourceTree = "<group>"; };
+		7DEC447B243A3AC70016E90A /* AppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,14 @@
 		3EA45247224F5F0C00932E0D /* Ej1MCSendString */ = {
 			isa = PBXGroup;
 			children = (
+				3EA4525A224F5FA000932E0D /* SendTextService.swift */,
 				3EA45248224F5F0C00932E0D /* AppDelegate.swift */,
 				3EA4524A224F5F0C00932E0D /* ViewController.swift */,
 				3EA4524C224F5F0C00932E0D /* Main.storyboard */,
 				3EA4524F224F5F0D00932E0D /* Assets.xcassets */,
 				3EA45251224F5F0D00932E0D /* LaunchScreen.storyboard */,
 				3EA45254224F5F0D00932E0D /* Info.plist */,
+				7DEC447B243A3AC70016E90A /* AppAlert.swift */,
 			);
 			path = Ej1MCSendString;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			files = (
 				3EA4524B224F5F0C00932E0D /* ViewController.swift in Sources */,
 				3EA45249224F5F0C00932E0D /* AppDelegate.swift in Sources */,
+				7DEC447C243A3AC70016E90A /* AppAlert.swift in Sources */,
+				3EA4525B224F5FA000932E0D /* SendTextService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

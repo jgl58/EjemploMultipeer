@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MultipeerConnectivity
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -21,15 +22,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let sendTextService = SendTextService()
     
     var listaUsuarios : [String] = []
+    var listaPeersIDs : [MCPeerID] = []
 
-    @IBOutlet weak var list: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.listaUsuarios = [String]()
         sendTextService.delegate=self
-        self.list.text = ""
+        
+        self.listaPeers.delegate = self
+        self.listaPeers.dataSource = self
 
     }
 
@@ -44,14 +47,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MiCelda", for: indexPath)
-        cell.detailTextLabel?.text = self.listaUsuarios[indexPath.row]
+        cell.textLabel?.text = self.listaUsuarios[indexPath.row]
         return cell
     }
+    
+    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        
+        /*let selectedRow = indexPath.row
+        
+        AppAlert.init(title: "Desea conectarse a este usuario?", message: listaPeersIDs[selectedRow].displayName, preferredStyle: .alert)
+        .addAction()*/
+        
+    }
+
     
 }
 
 
 extension ViewController: SendTextServiceDelegate {
+    
+    func devicesNear(devices: [MCPeerID]) {
+        OperationQueue.main.addOperation {
+            self.listaUsuarios = devices.map({$0.displayName})
+            self.listaPeersIDs = devices
+            self.listaPeers.reloadData()
+        }
+    }
+    
     
     func connectedDevicesChanged(manager: SendTextService, connectedDevices: [String]) {
         OperationQueue.main.addOperation {

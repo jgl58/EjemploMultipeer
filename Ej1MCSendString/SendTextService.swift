@@ -12,7 +12,7 @@ import MultipeerConnectivity
 protocol SendTextServiceDelegate {
     func connectedDevicesChanged(manager : SendTextService, connectedDevices: [String])
     func sendTextService(didReceive text: String)
-    func devicesNear(manager : SendTextService, devices: [String])
+    func devicesNear(devices: [MCPeerID])
 }
 
 class SendTextService : NSObject {
@@ -110,8 +110,7 @@ extension SendTextService : MCNearbyServiceBrowserDelegate {
        // NSLog("%@", "invitePeer: \(peerID)")
 //        browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 10)
         self.peerList.append(peerID)
-        self.delegate?.connectedDevicesChanged(manager: self, connectedDevices:
-            self.peerList.map{$0.displayName})
+        self.delegate?.devicesNear(devices: self.peerList)
         print("foundPeer: \(peerID)")
     }
     

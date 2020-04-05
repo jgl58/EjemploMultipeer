@@ -51,13 +51,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRow = indexPath.row
+        let selectedPeer = self.listaUsuarios[selectedRow]
         
-        /*let selectedRow = indexPath.row
+        let alert = UIAlertController(title: "Nueva conexión", message: "¿Conectar con " + selectedPeer + "?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Conectar", comment: "Default action"), style: .default, handler: { _ in
+            self.sendTextService.invite(displayName: selectedPeer)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
         
-        AppAlert.init(title: "Desea conectarse a este usuario?", message: listaPeersIDs[selectedRow].displayName, preferredStyle: .alert)
-        .addAction()*/
-        
+        self.listaPeers.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 
     

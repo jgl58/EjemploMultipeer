@@ -72,6 +72,13 @@ class SendTextService : NSObject {
         
     }
     
+    // Método que se ejecutará para realizar una invitación a un peer encontrado. En este caso el peer ya estará preseleccionado.
+    func invite(displayName: String) {
+        let conectingPeer = self.peerList.first(where: {$0.displayName == displayName})!
+        serviceBrowser.invitePeer(conectingPeer, to: self.session, withContext: nil, timeout: 10)
+        
+    }
+    
 }
 
 extension SendTextService : MCNearbyServiceAdvertiserDelegate {
@@ -116,6 +123,9 @@ extension SendTextService : MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         NSLog("%@", "lostPeer: \(peerID)")
+        // Eliminamos del array de peers encontrados la peer ID del objeto que ha perdido la conexión.
+        self.peerList.removeAll { $0 == peerID }
+        self.delegate?.devicesNear(devices: self.peerList)
     }
     
     
